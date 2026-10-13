@@ -24,13 +24,13 @@ const site = {
   // `focus` sets which part of the photo stays in frame when it is cropped.
   photos: [
     { name: "me-hudson", alt: "Abhishek leaning on the railing by the Hudson River at night, the Jersey City skyline lit up behind him", caption: "Hudson River, New York", focus: "58% 45%" },
-    { name: "me-cmu", alt: "Abhishek standing in front of the large Carnegie Mellon University lettering on a wooden wall", caption: "Carnegie Mellon, Pittsburgh", focus: "0% 50%", wide: true },
     { name: "me-run", alt: "Abhishek holding up a finisher’s medal after the Great Race, with the Pittsburgh skyline behind him", caption: "After the Great Race, Pittsburgh", focus: "50% 60%" },
+    { name: "me-cmu", alt: "Abhishek standing in front of the large Carnegie Mellon University lettering on a wooden wall", caption: "Carnegie Mellon, Pittsburgh", focus: "0% 50%", wide: true },
   ],
   aboutLead:
-    "Mechanical engineer turned consultant turned product person. These days I’m mostly thinking about where AI actually fits into a business.",
+    "I’m Abhishek. I build data and AI products, run when I can, and take photos of the places I end up.",
   about: [
-    "I spent three years at KPMG building data platforms and enterprise apps for large clients, and a summer at ZS helping a global pharma client run its reporting fully digital for the first time. Somewhere in there I started caring less about how to build things and more about what to build, and why.",
+    "I started out as a mechanical engineer, then spent three years at KPMG building data platforms and enterprise apps for large clients, and a summer at ZS helping a global pharma client run its reporting fully digital for the first time. Somewhere in there I started caring less about how to build things and more about what to build, and why.",
     "Now I’m finishing my Master’s in Information Systems Management at Carnegie Mellon, working on RAG and agentic systems, recommendation models, and the product decisions around them.",
   ],
   notes: [
@@ -272,26 +272,32 @@ export default function Portfolio() {
       </header>
 
       <main>
-        <Section id="about" title="About">
-          <p className="about-lead">{site.aboutLead}</p>
-          <div className="strip">
-            {site.photos.map((p) => (
-              <figure key={p.name} className={p.wide ? "wide" : ""}>
-                <picture>
-                  <source srcSet={`${p.name}.webp`} type="image/webp" />
-                  <img src={`${p.name}.jpg`} alt={p.alt} loading="lazy" style={{ objectPosition: p.focus }} />
-                </picture>
-                <figcaption>{p.caption}</figcaption>
-              </figure>
-            ))}
+        {/* About: photos staggered on the left, words on the right */}
+        <section id="about" className="section about-sec" aria-labelledby="about-h">
+          <div className="about-wrap">
+            <div className="about-photos">
+              {site.photos.map((p) => (
+                <figure key={p.name} className={p.wide ? "wide" : ""}>
+                  <picture>
+                    <source srcSet={`${p.name}.webp`} type="image/webp" />
+                    <img src={`${p.name}.jpg`} alt={p.alt} loading="lazy" style={{ objectPosition: p.focus }} />
+                  </picture>
+                  <figcaption>{p.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+            <div className="about-words">
+              <h2 id="about-h" className="about-label">About</h2>
+              <p className="about-lead">{site.aboutLead}</p>
+              <div className="about-text">
+                {site.about.map((t, i) => <p key={i}>{t}</p>)}
+              </div>
+              <dl className="notes">
+                {site.notes.map((n) => <div key={n.k}><dt>{n.k}</dt><dd>{n.v}</dd></div>)}
+              </dl>
+            </div>
           </div>
-          <div className="about-text">
-            {site.about.map((t, i) => <p key={i}>{t}</p>)}
-            <dl className="notes">
-              {site.notes.map((n) => <div key={n.k}><dt>{n.k}</dt><dd>{n.v}</dd></div>)}
-            </dl>
-          </div>
-        </Section>
+        </section>
 
         <Section id="work" title="Work">
           <p className="sub">Projects</p>
