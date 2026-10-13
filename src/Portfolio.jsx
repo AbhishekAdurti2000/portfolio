@@ -91,78 +91,87 @@ const site = {
     {
       when: "2026",
       title: "ZS Associates",
+      logo: { text: "ZS" },
       role: "Business Technology Solutions Associate Consultant Intern",
       desc: "Helped a global pharma client replace a pile of manual reporting with one digital process, from first requirements to sign-off.",
     },
     {
       when: "2024–25",
       title: "KPMG",
+      logo: { src: "logo-kpmg.svg" },
       role: "Associate Consultant",
       desc: "Built data pipelines in Databricks, Snowflake and Microsoft Fabric, and led requirements on a sustainability project for a client.",
     },
     {
       when: "2022–24",
       title: "KPMG",
+      logo: { src: "logo-kpmg.svg" },
       role: "Analyst",
       desc: "Built apps and automations for clients on Power Platform and Azure, and a RAG assistant for customer support.",
     },
     {
       when: "2022",
       title: "KPMG",
+      logo: { src: "logo-kpmg.svg" },
       role: "Intern Analyst",
       desc: "Built a compliance approval tool that cut approval time by 90%.",
     },
   ],
 
   education: [
-    {
-      when: "2025–26",
-      title: "Carnegie Mellon University",
-      role: "Master of Information Systems Management, Heinz College",
-      desc: "Splitting my time between AI, data and product. Graduating in December 2026.",
-      stack: "Machine Learning in Production · Distributed Systems · Data Science for Product Managers · Product Management Essentials · Managing Disruptive Technology · Database Management",
-    },
-    {
-      when: "2018–22",
-      title: "Vellore Institute of Technology",
-      role: "B.Tech in Mechanical Engineering · GPA 3.86 / 4.0",
-      desc: "Where I first got into data and programming. I also chaired the Scientific Research Society, running 15+ events on data science, ML and AI with a team of 100+.",
-      stack: "Python · Statistics · Applied Numerical Methods · Product Development & Management",
-    },
-    {
-      when: "2018",
-      title: "Springdales School, Delhi",
-      role: "High school, science",
-      desc: "Ran the computer club, helped start the photography club, and won a national filmmaking competition.",
-    },
+    { when: "2025–26", title: "Carnegie Mellon University", logo: { src: "https://upload.wikimedia.org/wikipedia/en/b/bb/Carnegie_Mellon_University_seal.svg", text: "CMU" }, role: "Master of Information Systems Management, Heinz College" },
+    { when: "2018–22", title: "Vellore Institute of Technology", logo: { src: "logo-vit.svg" }, role: "B.Tech in Mechanical Engineering · GPA 3.86 / 4.0" },
+    { when: "2018", title: "Springdales School, Delhi", logo: { src: "logo-springdales.png" }, role: "High school, science" },
   ],
 
   awards: [
-    { when: "2024", title: "Encore Spot Award", role: "KPMG India", desc: "For going beyond delivery: client demos, estimates and pre-sales work." },
-    { when: "2024", title: "Encore Kudos Award", role: "KPMG India", desc: "For consistently good client work and picking up new skills quickly." },
-    { when: "2023", title: "Up for Anything Team Member", role: "KPMG India", desc: "For owning critical work and delivering under tight deadlines." },
-    { when: "2021", title: "Chairperson, Scientific Research Society", role: "VIT", desc: "Led 100+ members and 15+ events, including an outreach program teaching computer science to children." },
-    { when: "2018", title: "Special Achiever Award", role: "Springdales School", desc: "For organizing state-level tech fests and representing the school at competitions." },
+    { when: "2024", title: "Encore Spot Award", logo: { src: "logo-kpmg.svg" }, role: "KPMG India", desc: "For going beyond delivery: client demos, estimates and pre-sales work." },
+    { when: "2024", title: "Encore Kudos Award", logo: { src: "logo-kpmg.svg" }, role: "KPMG India", desc: "For consistently good client work and picking up new skills quickly." },
+    { when: "2023", title: "Up for Anything Team Member", logo: { src: "logo-kpmg.svg" }, role: "KPMG India", desc: "For owning critical work and delivering under tight deadlines." },
+    { when: "2021", title: "Chairperson, Scientific Research Society", logo: { src: "logo-vit.svg" }, role: "VIT", desc: "Led 100+ members and 15+ events, including an outreach program teaching computer science to children." },
+    { when: "2018", title: "Special Achiever Award", logo: { src: "logo-springdales.png" }, role: "Springdales School", desc: "For organizing state-level tech fests and representing the school at competitions." },
   ],
 
   certifications: "Professional Scrum Master I · AWS Certified Cloud Practitioner · Microsoft Azure Fundamentals (AZ-900) · Power Platform App Maker (PL-100) · Power Platform Developer (PL-400)",
 
+  // Skills, laid out like a shelf: languages on one line, then groups.
+  // `i` is an icon file in public/icons (optional).
+  languages: [
+    { n: "Python", i: "python" }, { n: "SQL", i: "sql" }, { n: "Java", i: "java" },
+    { n: "JavaScript", i: "javascript" }, { n: "C++", i: "cplusplus" },
+  ],
   skills: [
-    { k: "Languages", v: "Python, SQL, Java, JavaScript, C++" },
-    { k: "Data", v: "Databricks, Apache Spark, Apache Kafka, Snowflake, BigQuery, Microsoft Fabric" },
-    { k: "AI & ML", v: "LangGraph, RAG, TensorFlow, scikit-learn, OpenCV" },
-    { k: "Cloud", v: "Azure, AWS, GCP, Docker, Azure DevOps" },
-    { k: "Product", v: "Discovery and requirements, prototyping, Agile / Scrum, Jira, Figma" },
+    { group: "AI & ML", items: [
+      { n: "LangGraph" }, { n: "RAG" }, { n: "TensorFlow", i: "tensorflow" },
+      { n: "scikit-learn", i: "scikitlearn" }, { n: "OpenCV", i: "opencv" }, { n: "Pandas", i: "pandas" },
+    ] },
+    { group: "Data", items: [
+      { n: "Databricks" }, { n: "Apache Spark", i: "apachespark" }, { n: "Apache Kafka", i: "apachekafka" },
+      { n: "Snowflake" }, { n: "BigQuery", i: "googlecloud" }, { n: "Microsoft Fabric" },
+    ] },
+    { group: "Cloud & DevOps", items: [
+      { n: "Azure", i: "azure" }, { n: "AWS", i: "amazonwebservices" }, { n: "GCP", i: "googlecloud" },
+      { n: "Docker", i: "docker" }, { n: "Azure DevOps", i: "azuredevops" },
+      { n: "Git", i: "git" }, { n: "GitHub Actions", i: "githubactions" },
+    ] },
+    { group: "Product", items: [
+      { n: "Discovery & requirements" }, { n: "Prototyping" }, { n: "Agile / Scrum" },
+      { n: "Jira", i: "jira" }, { n: "Figma", i: "figma" },
+    ] },
   ],
 
   quotes: [
     {
-      text: "He went above and beyond, leading the team in feature development, code reviews, and knowledge transfer sessions.",
-      who: "Gaurav Dureja, Technical Architect, KPMG India",
+      text: "Focused and diligent, demonstrating a great work ethic by seamlessly working on multiple projects and delivering tasks on time. He went above and beyond, leading the team in feature development, code reviews, and knowledge transfer sessions.",
+      name: "Gaurav Dureja", title: "Technical Architect, KPMG India", rel: "My manager and mentor",
     },
     {
-      text: "His ability to coordinate across multiple departments and propose innovative solutions demonstrated his technical expertise, strategic thinking, and attention to detail.",
-      who: "Prince Sidana, Director, Digital Cloud Solutions, KPMG India",
+      text: "His ability to coordinate across multiple departments and propose innovative solutions demonstrated his technical expertise, strategic thinking, and attention to detail. He will be an asset to any organization.",
+      name: "Prince Sidana", title: "Director, Digital Cloud Solutions, KPMG India", rel: "Manager and mentor",
+    },
+    {
+      text: "Through his technical expertise and leadership skills, he has made significant contributions across various projects. He mentored junior developers, guided code reviews, and promoted best software practices.",
+      name: "Subhajyoti Majumdar", title: "Senior Technical Architect, KPMG India", rel: "Project and performance manager",
     },
   ],
 };
@@ -236,22 +245,43 @@ function Projects({ rows }) {
   );
 }
 
+function Logo({ logo }) {
+  const [failed, setFailed] = useState(false);
+  if (!logo) return null;
+  if (logo.src && !failed) {
+    return (
+      <span className="logo">
+        <img src={logo.src} alt="" onError={() => setFailed(true)} />
+      </span>
+    );
+  }
+  return <span className="logo logo-text" aria-hidden="true">{logo.text}</span>;
+}
+
 function Index({ rows }) {
   return (
     <ul className="index">
       {rows.map((r) => (
         <li key={r.title + (r.role || "")}>
           <span className="when">{r.when}</span>
-          <div>
-            <div className="title">{r.title}</div>
-            {r.role && <div className="role">{r.role}</div>}
-            <p className="desc">{r.desc}</p>
-            {r.stack && <p className="stack">{r.stack}</p>}
+          <div className={r.logo ? "with-logo" : ""}>
+            <Logo logo={r.logo} />
+            <div>
+              <div className="title">{r.title}</div>
+              {r.role && <div className="role">{r.role}</div>}
+              {r.desc && <p className="desc">{r.desc}</p>}
+              {r.stack && <p className="stack">{r.stack}</p>}
+            </div>
           </div>
         </li>
       ))}
     </ul>
   );
+}
+
+function Icon({ name }) {
+  if (!name) return <span className="icon icon-none" aria-hidden="true" />;
+  return <span className="icon" aria-hidden="true" style={{ WebkitMaskImage: `url(icons/${name}.svg)`, maskImage: `url(icons/${name}.svg)` }} />;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -311,26 +341,34 @@ export default function Portfolio() {
           <Index rows={site.experience} />
         </Section>
 
-        <Section id="education" title="Education">
-          <Index rows={site.education} />
-        </Section>
-
         <Section id="awards" title="Awards & recognition">
           <Index rows={site.awards} />
           <p className="certs"><span className="label">Certifications</span>{site.certifications}</p>
         </Section>
 
-        <Section id="skills" title="Toolkit">
-          <dl className="skills">
-            {site.skills.map((s) => <div key={s.k}><dt>{s.k}</dt><dd>{s.v}</dd></div>)}
-          </dl>
+        <Section id="education" title="Education">
+          <Index rows={site.education} />
         </Section>
 
-        <Section id="kind-words" title="Kind words">
+        <Section id="skills" title="Skills">
+          <ul className="langs">
+            {site.languages.map((l) => <li key={l.n}><Icon name={l.i} />{l.n}</li>)}
+          </ul>
+          <div className="skill-groups">
+            {site.skills.map((g) => (
+              <div key={g.group}>
+                <h3 className="label">{g.group}</h3>
+                <ul>{g.items.map((it) => <li key={it.n}><Icon name={it.i} />{it.n}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section id="testimonials" title="Testimonials">
           {site.quotes.map((q) => (
-            <figure className="quote" key={q.who}>
+            <figure className="quote" key={q.name}>
               <blockquote>“{q.text}”</blockquote>
-              <figcaption>{q.who}</figcaption>
+              <figcaption><b>{q.name}</b><span>{q.title} · {q.rel}</span></figcaption>
             </figure>
           ))}
         </Section>

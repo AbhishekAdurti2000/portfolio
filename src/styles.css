@@ -161,16 +161,29 @@ a { color: inherit; text-decoration: none; }
 .certs { margin-top: 40px; color: var(--body); font-size: 15px; line-height: 1.7; max-width: 64ch; }
 .certs .label { display: block; margin-bottom: 8px; font-size: 12px; }
 
-/* ─── Toolkit ───────────────────────────────────────────────── */
-.skills { border-top: 1px solid var(--rule); }
-.skills div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
-.skills dt { color: var(--meta); font-size: 15px; padding-top: 1px; }
-.skills dd { color: var(--body); }
-@media (max-width: 560px) { .skills div { grid-template-columns: 1fr; gap: 2px; } }
+/* ─── Skills: languages on a line, then groups in two columns ─ */
+.icon { flex: none; width: 16px; height: 16px; background: currentColor; opacity: .75;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain; }
+.icon-none { background: none; }
+.langs { list-style: none; display: flex; flex-wrap: wrap; gap: 12px 28px; margin-bottom: 48px; }
+.langs li, .skill-groups li { display: flex; align-items: center; gap: 10px; color: var(--body); }
+.skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 44px 48px; }
+.skill-groups .label { font-size: 12px; margin-bottom: 14px; }
+.skill-groups ul { list-style: none; display: grid; gap: 10px; }
+@media (max-width: 480px) { .skill-groups { grid-template-columns: 1fr 1fr; gap: 36px 20px; } }
 
-/* ─── Kind words ────────────────────────────────────────────── */
-.quote blockquote { font-weight: 400; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.35; letter-spacing: -0.02em; max-width: 34ch; text-wrap: pretty; }
-.quote figcaption { margin-top: 16px; font-size: 14px; color: var(--meta); }
+/* ─── Logos beside companies and schools ────────────────────── */
+.with-logo { display: flex; gap: 16px; align-items: flex-start; min-width: 0; }
+.with-logo > div { min-width: 0; }
+.logo { flex: none; width: 44px; height: 44px; border-radius: 10px; background: #f4f5f7; display: inline-flex; align-items: center; justify-content: center; overflow: hidden; }
+.logo img { width: 100%; height: 100%; object-fit: contain; padding: 6px; }
+.logo-text { background: #1a1d22; border: 1px solid var(--rule); color: var(--text); font-size: 13px; font-weight: 600; letter-spacing: .02em; }
+
+/* ─── Testimonials ──────────────────────────────────────────── */
+.quote blockquote { font-weight: 400; font-size: clamp(19px, 2vw, 23px); line-height: 1.45; letter-spacing: -0.015em; max-width: 46ch; text-wrap: pretty; }
+.quote figcaption { margin-top: 16px; display: grid; gap: 2px; font-size: 14px; color: var(--meta); }
+.quote figcaption b { font-weight: 500; color: var(--text); font-size: 15px; }
 .quote + .quote { margin-top: 56px; }
 
 /* ─── Contact ───────────────────────────────────────────────── */
