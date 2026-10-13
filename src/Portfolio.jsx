@@ -30,115 +30,60 @@ const site = {
   aboutLead:
     "I’m Abhishek. I build data and AI products, run when I can, and take photos of the places I end up.",
   about: [
-    "I started out as a mechanical engineer, then spent three years at KPMG building data platforms and enterprise apps for large clients, and a summer at ZS helping a global pharma client run its reporting fully digital for the first time. Somewhere in there I started caring less about how to build things and more about what to build, and why.",
-    "Now I’m finishing my Master’s in Information Systems Management at Carnegie Mellon, working on RAG and agentic systems, recommendation models, and the product decisions around them.",
-  ],
-  notes: [
-    { k: "Running", v: "Pittsburgh’s Great Race, and whatever’s next" },
-    { k: "Playing", v: "Tennis, still grinding the serve" },
-    { k: "Shooting", v: "Cities, mostly after dark" },
-    { k: "Reading", v: "Continuous Discovery Habits, Teresa Torres" },
+    "I studied mechanical engineering, then spent three years at KPMG building data platforms and apps for clients, plus a summer at ZS. Somewhere along the way I got more interested in what to build than in how to build it.",
+    "Now I’m doing my Master’s in Information Systems Management at Carnegie Mellon, mostly working on AI: RAG, agents, recommendation models, and the product side of all of it.",
   ],
 
+  // Each project: a one-line summary, and a short story that opens on click.
   projects: [
     {
       when: "2026",
       title: "SentinelRAG",
-      tag: "AI · Carnegie Mellon",
-      desc: "Agentic RAG assistant over live GitHub data, with guardrails and evaluations that run in CI.",
+      tag: "Carnegie Mellon",
+      desc: "An AI assistant that answers questions from live GitHub data, with guardrails and tests that run on every change.",
       stack: "LangGraph · Claude API · GitHub Actions",
       link: "https://github.com/AbhishekAdurti2000/sentinelrag",
-      context: "Answers about a codebase go stale fast. I wanted an assistant that reads a repository as it is right now and can be trusted not to make things up.",
-      role: "Solo project. Designed the agent, the retrieval over live GitHub data, the guardrails and the evaluation suite, and built it hands-on with Claude Code.",
-      features: [
-        "Agentic workflow built with LangGraph on the Claude API",
-        "Retrieval over live GitHub data rather than a stale snapshot",
-        "Guardrails around what the agent will answer",
-        "Automated evaluations that run in CI on every change",
-      ],
-      impact: "Published on GitHub as a working, tested agentic RAG system.",
+      story: "A solo project. The agent is built with LangGraph on the Claude API and pulls live data from GitHub instead of a saved copy. It has guardrails on what it will answer, and a set of evaluations runs in CI every time I push a change. I built most of it with Claude Code.",
     },
     {
       when: "2026",
       title: "Movie Recommendation Service",
-      tag: "Machine Learning in Production · Carnegie Mellon",
-      desc: "Kafka streaming pipeline and collaborative-filtering model for a million-user movie service, built with my team.",
+      tag: "Machine Learning in Production, Carnegie Mellon",
+      desc: "A movie recommender for about a million users, fed by a live Kafka stream. Built with my team.",
       stack: "Apache Kafka · TensorFlow · Python",
-      context: "The course project for Machine Learning in Production: run a recommendation service for about a million users from a live Kafka event stream, the way it would run in production.",
-      role: "On team Backprop to the Future, I built the collaborative-filtering candidate model and wrote its section of our report.",
-      features: [
-        "Kafka pipeline consuming the live stream of user activity",
-        "Collaborative-filtering recommendation model",
-        "Candidate models compared head to head before choosing one",
-      ],
-      impact: "The team chose my collaborative-filtering model as the production model.",
+      story: "Our team, Backprop to the Future, runs a recommendation service the way it would run in production. I built one of the candidate models, a collaborative-filtering recommender, and the team picked it as the one to put into production.",
     },
     {
       when: "2024–25",
       title: "ESG Reporting System",
-      tag: "Data Engineering · KPMG",
-      desc: "Automated ESG metric ingestion for 100+ stakeholders, reducing manual effort by 40%.",
-      stack: "Microsoft Fabric · Python · Power BI · EcoVadis API · RBAC",
-      context: "Large enterprises needed a centralized, automated way to collect, transform, and report ESG metrics for CSRD compliance. Manual processes were slow, error-prone, and couldn’t scale across business units.",
-      role: "Led the end-to-end design and development as Associate Consultant at KPMG. Owned the data pipeline architecture, stakeholder demos, and Power BI dashboard design.",
-      features: [
-        "Multi-layer data pipeline with automated ingestion from 100+ stakeholders",
-        "Python optimization scripts improving pipeline efficiency by 35%",
-        "Power BI KPI models with 30% better reporting accuracy",
-        "Role-based access control and dynamic data masking",
-        "EcoVadis API integration with HRMS for 500+ records a month",
-      ],
-      impact: "Cut manual reporting effort by 40% and enabled real-time, CSRD-compliant sustainability analysis across the organization.",
+      tag: "KPMG",
+      desc: "Pulls sustainability data together for 100+ stakeholders, so nobody has to do it by hand anymore.",
+      stack: "Microsoft Fabric · Python · Power BI · EcoVadis API",
+      story: "Clients needed ESG numbers for CSRD reporting, and collecting them meant a lot of spreadsheets. I designed and built the pipeline in Microsoft Fabric, the Power BI dashboards on top of it, and the access controls that keep sensitive HR data masked. It cut the manual work by about 40%.",
     },
     {
       when: "2022–24",
       title: "Distributor Management App",
-      tag: "Enterprise App · KPMG",
-      desc: "Sales app with 95% adoption, automating 10,000+ monthly transactions.",
-      stack: "Power Apps · Azure Logic Apps · Azure DevOps · SharePoint",
-      context: "Distributors were managing orders by email and spreadsheets, which led to delays and errors. The client needed a mobile-first app that worked with its existing ERP systems.",
-      role: "Designed and built it end to end as an Analyst at KPMG. Led design sprints and stakeholder demos, and mentored 5 developers on the project.",
-      features: [
-        "Mobile-responsive order management in Power Apps",
-        "Automated invoicing for 10,000+ monthly transactions",
-        "Azure Logic Apps workflows for approvals",
-        "SharePoint integration for documents",
-        "Real-time order tracking and status notifications",
-      ],
-      impact: "Cut order processing time by 40%, reached 95% adoption among distributors, and lifted team adoption by 80% through design sprints.",
+      tag: "KPMG",
+      desc: "An ordering app that replaced email and spreadsheets for a client’s distributors. 95% of them use it.",
+      stack: "Power Apps · Azure Logic Apps · SharePoint",
+      story: "Distributors were placing orders over email and in spreadsheets. I designed and built a mobile app on Power Apps with approval flows in Azure Logic Apps, ran design sprints with the client, and mentored the five developers on the team. Orders now take about 40% less time to process.",
     },
     {
       when: "2021",
       title: "CO₂ Emissions Forecasting",
-      tag: "Machine Learning",
-      desc: "Random forest model predicting CO₂ emissions with a 96.8% R² score.",
+      tag: "College project",
+      desc: "Forecasts annual CO₂ emissions from World Bank data.",
       stack: "Python · scikit-learn · Pandas",
-      context: "Sustainability teams needed accurate emissions forecasts to plan reduction strategies, and existing estimates were manual and imprecise.",
-      role: "Solo project. Designed the ML pipeline, feature engineering, model selection, and evaluation.",
-      features: [
-        "Preprocessing pipeline on World Bank datasets",
-        "Features for temporal and regional emission patterns",
-        "Random forest regression with hyperparameter tuning",
-        "Cross-validation and model comparison",
-        "Visualization of emissions trends",
-      ],
-      impact: "Reached a 96.8% R² score, giving sustainability planning an accurate, data-driven forecast.",
+      story: "I cleaned up World Bank data, tried a few models, and settled on a random forest. It reached an R² of 0.968.",
     },
     {
       when: "2021",
       title: "Facial Expression Detection",
-      tag: "Deep Learning",
-      desc: "Deep convolutional network classifying seven emotions with 86.63% accuracy.",
+      tag: "College project",
+      desc: "Looks at a face and tells which of seven emotions it shows.",
       stack: "Python · TensorFlow · OpenCV",
-      context: "An exploration of emotion-aware AI for human-computer interaction: a real-time emotion classifier from facial images.",
-      role: "Solo project. Designed the CNN architecture, training pipeline, and evaluation.",
-      features: [
-        "Deep CNN for 7-class emotion recognition",
-        "Data augmentation on the FER-2013 dataset",
-        "Real-time inference with OpenCV face detection",
-        "Confusion-matrix analysis and per-class tuning",
-      ],
-      impact: "86.63% accuracy across seven emotions, showing emotion-aware AI is viable in real time.",
+      story: "A convolutional neural network trained on the FER-2013 dataset, running in real time with OpenCV. It got 86.6% accuracy across the seven emotions.",
     },
   ],
 
@@ -147,25 +92,25 @@ const site = {
       when: "2026",
       title: "ZS Associates",
       role: "Business Technology Solutions Associate Consultant Intern",
-      desc: "Took a global pharma client from scattered requirements across six workstreams to its first fully digital reporting cycle.",
+      desc: "Helped a global pharma client replace a pile of manual reporting with one digital process, from first requirements to sign-off.",
     },
     {
       when: "2024–25",
       title: "KPMG",
       role: "Associate Consultant",
-      desc: "Databricks, Snowflake and Microsoft Fabric pipelines behind 100+ KPI dashboards; owned requirements on a client-facing sustainability transformation.",
+      desc: "Built data pipelines in Databricks, Snowflake and Microsoft Fabric, and led requirements on a sustainability project for a client.",
     },
     {
       when: "2022–24",
       title: "KPMG",
       role: "Analyst",
-      desc: "Shipped a distributor sales app with 95% adoption, automated 10,000+ monthly invoices, and built a RAG support assistant.",
+      desc: "Built apps and automations for clients on Power Platform and Azure, and a RAG assistant for customer support.",
     },
     {
       when: "2022",
       title: "KPMG",
       role: "Intern Analyst",
-      desc: "Built a compliance approval tool that cut approval times by 90%.",
+      desc: "Built a compliance approval tool that cut approval time by 90%.",
     },
   ],
 
@@ -224,7 +169,7 @@ function Section({ id, title, children }) {
   return (
     <section id={id} className="section" aria-labelledby={`${id}-h`}>
       <div className="section-inner">
-        <div className="rail"><h2 id={`${id}-h`}>{title}</h2></div>
+        <div className="rail"><h2 id={`${id}-h`} className="label">{title}</h2></div>
         <div className="content">{children}</div>
       </div>
     </section>
@@ -239,22 +184,19 @@ function Projects({ rows }) {
           <span className="when">{r.when}</span>
           <details>
             <summary>
-              <span className="title">{r.title}</span>
+              <span className="head">
+                <span className="title">{r.title}</span>
+                <span className="toggle" aria-hidden="true" />
+              </span>
               <span className="tag">{r.tag}</span>
               <span className="desc">{r.desc}</span>
               <span className="stack">{r.stack}</span>
-              <span className="more" aria-hidden="true">Details</span>
             </summary>
             <div className="detail">
-              <div><h4>Context</h4><p>{r.context}</p></div>
-              <div><h4>My role</h4><p>{r.role}</p></div>
-              <div><h4>What I built</h4><ul>{r.features.map((f) => <li key={f}>{f}</li>)}</ul></div>
-              <div><h4>Impact</h4><p>{r.impact}</p></div>
+              <p>{r.story}</p>
+              {r.link && <a className="link" href={r.link} target="_blank" rel="noreferrer">See it on GitHub ↗</a>}
             </div>
           </details>
-          {r.link
-            ? <a className="go gold" href={r.link} target="_blank" rel="noreferrer">GitHub ↗</a>
-            : <span />}
         </li>
       ))}
     </ul>
@@ -273,9 +215,6 @@ function Index({ rows }) {
             <p className="desc">{r.desc}</p>
             {r.stack && <p className="stack">{r.stack}</p>}
           </div>
-          {r.link
-            ? <a className="go gold" href={r.link} target="_blank" rel="noreferrer">GitHub ↗</a>
-            : <span />}
         </li>
       ))}
     </ul>
@@ -322,22 +261,20 @@ export default function Portfolio() {
               ))}
             </div>
             <div className="about-words">
-              <h2 id="about-h" className="about-label">About</h2>
+              <h2 id="about-h" className="label">About</h2>
               <p className="about-lead">{site.aboutLead}</p>
               <div className="about-text">
                 {site.about.map((t, i) => <p key={i}>{t}</p>)}
               </div>
-              <dl className="notes">
-                {site.notes.map((n) => <div key={n.k}><dt>{n.k}</dt><dd>{n.v}</dd></div>)}
-              </dl>
             </div>
           </div>
         </section>
 
-        <Section id="work" title="Work">
-          <p className="sub">Projects</p>
+        <Section id="work" title="Projects">
           <Projects rows={site.projects} />
-          <p className="sub">Experience</p>
+        </Section>
+
+        <Section id="experience" title="Experience">
           <Index rows={site.experience} />
         </Section>
 
@@ -358,7 +295,7 @@ export default function Portfolio() {
 
         <Section id="contact" title="Contact">
           <p className="contact-line">Always up for a good conversation about data, AI, or what makes a product worth building.</p>
-          <a className="contact-mail gold" href={`mailto:${site.email}`}>{site.email}</a>
+          <a className="contact-mail link" href={`mailto:${site.email}`}>{site.email}</a>
           <p className="contact-links">
             <a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
             <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
