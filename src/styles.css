@@ -158,6 +158,9 @@ a { color: inherit; text-decoration: none; }
 .detail .link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 6px; font-size: 15px; }
 @keyframes open { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: none; } }
 
+.certs { margin-top: 40px; color: var(--body); font-size: 15px; line-height: 1.7; max-width: 64ch; }
+.certs .label { display: block; margin-bottom: 8px; font-size: 12px; }
+
 /* ─── Toolkit ───────────────────────────────────────────────── */
 .skills { border-top: 1px solid var(--rule); }
 .skills div { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); }

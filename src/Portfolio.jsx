@@ -114,6 +114,39 @@ const site = {
     },
   ],
 
+  education: [
+    {
+      when: "2025–26",
+      title: "Carnegie Mellon University",
+      role: "Master of Information Systems Management, Heinz College",
+      desc: "Splitting my time between AI, data and product. Graduating in December 2026.",
+      stack: "Machine Learning in Production · Distributed Systems · Data Science for Product Managers · Product Management Essentials · Managing Disruptive Technology · Database Management",
+    },
+    {
+      when: "2018–22",
+      title: "Vellore Institute of Technology",
+      role: "B.Tech in Mechanical Engineering · GPA 3.86 / 4.0",
+      desc: "Where I first got into data and programming. I also chaired the Scientific Research Society, running 15+ events on data science, ML and AI with a team of 100+.",
+      stack: "Python · Statistics · Applied Numerical Methods · Product Development & Management",
+    },
+    {
+      when: "2018",
+      title: "Springdales School, Delhi",
+      role: "High school, science",
+      desc: "Ran the computer club, helped start the photography club, and won a national filmmaking competition.",
+    },
+  ],
+
+  awards: [
+    { when: "2024", title: "Encore Spot Award", role: "KPMG India", desc: "For going beyond delivery: client demos, estimates and pre-sales work." },
+    { when: "2024", title: "Encore Kudos Award", role: "KPMG India", desc: "For consistently good client work and picking up new skills quickly." },
+    { when: "2023", title: "Up for Anything Team Member", role: "KPMG India", desc: "For owning critical work and delivering under tight deadlines." },
+    { when: "2021", title: "Chairperson, Scientific Research Society", role: "VIT", desc: "Led 100+ members and 15+ events, including an outreach program teaching computer science to children." },
+    { when: "2018", title: "Special Achiever Award", role: "Springdales School", desc: "For organizing state-level tech fests and representing the school at competitions." },
+  ],
+
+  certifications: "Professional Scrum Master I · AWS Certified Cloud Practitioner · Microsoft Azure Fundamentals (AZ-900) · Power Platform App Maker (PL-100) · Power Platform Developer (PL-400)",
+
   skills: [
     { k: "Languages", v: "Python, SQL, Java, JavaScript, C++" },
     { k: "Data", v: "Databricks, Apache Spark, Apache Kafka, Snowflake, BigQuery, Microsoft Fabric" },
@@ -276,6 +309,15 @@ export default function Portfolio() {
 
         <Section id="experience" title="Experience">
           <Index rows={site.experience} />
+        </Section>
+
+        <Section id="education" title="Education">
+          <Index rows={site.education} />
+        </Section>
+
+        <Section id="awards" title="Awards & recognition">
+          <Index rows={site.awards} />
+          <p className="certs"><span className="label">Certifications</span>{site.certifications}</p>
         </Section>
 
         <Section id="skills" title="Toolkit">
