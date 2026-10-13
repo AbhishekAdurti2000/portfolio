@@ -171,7 +171,12 @@ function Bar() {
   return (
     <nav className={`bar${solid ? " solid" : ""}`} aria-label="Primary">
       <div className="bar-inner">
-        <a className="bar-name" href="#top">{site.name}</a>
+        <a className="bar-logo" href="#top" aria-label={`${site.name}, back to top`}>
+          <picture>
+            <source srcSet="logo.webp" type="image/webp" />
+            <img src="logo.png" alt="" width="188" height="128" />
+          </picture>
+        </a>
         <ul>
           <li className="hide-sm"><a href="#about">About</a></li>
           <li><a href="#work">Work</a></li>

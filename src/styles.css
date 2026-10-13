@@ -51,12 +51,14 @@ a { color: inherit; text-decoration: none; }
   border-bottom-color: var(--rule);
 }
 .bar-inner { max-width: var(--wide); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-.bar-name { font-family: var(--serif); font-size: 21px; line-height: 1; white-space: nowrap; }
 .bar ul { list-style: none; display: flex; gap: 18px; font-size: 15px; }
 .bar ul a { color: rgba(233, 237, 242, .9); transition: color .2s; display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
-.bar-name { display: inline-flex; align-items: center; min-height: 44px; }
+.bar-logo { display: inline-flex; align-items: center; min-height: 44px; }
+.bar-logo img { height: 58px; width: auto; transition: transform .3s ease, height .35s ease; }
+.bar-logo:hover img { transform: rotate(-3deg) scale(1.04); }
+.bar.solid .bar-logo img { height: 46px; }
 .bar ul a:hover { color: var(--text); }
-@media (max-width: 560px) { .bar ul { gap: 8px; font-size: 14px; } .bar .hide-sm { display: none; } .bar-name { font-size: 18px; } }
+@media (max-width: 560px) { .bar ul { gap: 8px; font-size: 14px; } .bar .hide-sm { display: none; } .bar-logo img { height: 48px; } .bar.solid .bar-logo img { height: 42px; } }
 
 /* ─── Hero: the photograph, name set low on the water ────────── */
 .hero { position: relative; height: 92vh; height: 92svh; min-height: 520px; max-height: 980px; overflow: hidden; background: #1c2a40; }
@@ -216,3 +218,4 @@ a { color: inherit; text-decoration: none; }
   .about-photos { max-width: 520px; width: 100%; margin: 0 auto; }
 }
 @media (prefers-reduced-motion: reduce) { .about-photos figure { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .bar-logo img { transition: none; } }
