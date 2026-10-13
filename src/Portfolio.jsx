@@ -20,9 +20,12 @@ const site = {
     coords: "40.70° N, 73.99° W",
   },
 
-  // Add more photos of you here; the About section lays them out automatically.
+  // Photos of me, shown as a strip in About. Each has a webp and a jpg.
+  // `focus` sets which part of the photo stays in frame when it is cropped.
   photos: [
-    { src: "headshot.jpeg", alt: "Portrait of Abhishek Adurti" },
+    { name: "me-hudson", alt: "Abhishek leaning on the railing by the Hudson River at night, the Jersey City skyline lit up behind him", caption: "Hudson River, New York", focus: "58% 45%" },
+    { name: "me-cmu", alt: "Abhishek standing in front of the large Carnegie Mellon University lettering on a wooden wall", caption: "Carnegie Mellon, Pittsburgh", focus: "0% 50%", wide: true },
+    { name: "me-run", alt: "Abhishek holding up a finisher’s medal after the Great Race, with the Pittsburgh skyline behind him", caption: "After the Great Race, Pittsburgh", focus: "50% 60%" },
   ],
   aboutLead:
     "Mechanical engineer turned consultant turned product person. These days I’m mostly thinking about where AI actually fits into a business.",
@@ -31,8 +34,9 @@ const site = {
     "Now I’m finishing my Master’s in Information Systems Management at Carnegie Mellon, working on RAG and agentic systems, recommendation models, and the product decisions around them.",
   ],
   notes: [
-    { k: "Shooting", v: "Wherever I travel next" },
+    { k: "Running", v: "Pittsburgh’s Great Race, and whatever’s next" },
     { k: "Playing", v: "Tennis, still grinding the serve" },
+    { k: "Shooting", v: "Cities, mostly after dark" },
     { k: "Reading", v: "Continuous Discovery Habits, Teresa Torres" },
   ],
 
@@ -77,7 +81,6 @@ const site = {
       tag: "Machine Learning",
       desc: "Random forest model predicting CO₂ emissions with a 96.8% R² score.",
       stack: "Python · scikit-learn · Pandas",
-      link: "https://github.com/AbhishekAdurti2000",
       context: "Sustainability teams needed accurate emissions forecasts to plan reduction strategies, and existing estimates were manual and imprecise.",
       role: "Solo project. Designed the ML pipeline, feature engineering, model selection, and evaluation.",
       features: [
@@ -95,7 +98,6 @@ const site = {
       tag: "Deep Learning",
       desc: "Deep convolutional network classifying seven emotions with 86.63% accuracy.",
       stack: "Python · TensorFlow · OpenCV",
-      link: "https://github.com/AbhishekAdurti2000",
       context: "An exploration of emotion-aware AI for human-computer interaction: a real-time emotion classifier from facial images.",
       role: "Solo project. Designed the CNN architecture, training pipeline, and evaluation.",
       features: [
@@ -169,7 +171,7 @@ function Bar() {
   return (
     <nav className={`bar${solid ? " solid" : ""}`} aria-label="Primary">
       <div className="bar-inner">
-        <a className="bar-name" href="#top">AA</a>
+        <a className="bar-name" href="#top">{site.name}</a>
         <ul>
           <li className="hide-sm"><a href="#about">About</a></li>
           <li><a href="#work">Work</a></li>
@@ -272,21 +274,22 @@ export default function Portfolio() {
       <main>
         <Section id="about" title="About">
           <p className="about-lead">{site.aboutLead}</p>
-          <div className="about-grid">
-            <div className={`photos n${site.photos.length}`}>
-              {site.photos.map((p) => (
-                <figure key={p.src}>
-                  <img src={p.src} alt={p.alt} loading="lazy" />
-                  {p.caption && <figcaption>{p.caption}</figcaption>}
-                </figure>
-              ))}
-            </div>
-            <div className="about-text">
-              {site.about.map((t, i) => <p key={i}>{t}</p>)}
-              <dl className="notes">
-                {site.notes.map((n) => <div key={n.k}><dt>{n.k}</dt><dd>{n.v}</dd></div>)}
-              </dl>
-            </div>
+          <div className="strip">
+            {site.photos.map((p) => (
+              <figure key={p.name} className={p.wide ? "wide" : ""}>
+                <picture>
+                  <source srcSet={`${p.name}.webp`} type="image/webp" />
+                  <img src={`${p.name}.jpg`} alt={p.alt} loading="lazy" style={{ objectPosition: p.focus }} />
+                </picture>
+                <figcaption>{p.caption}</figcaption>
+              </figure>
+            ))}
+          </div>
+          <div className="about-text">
+            {site.about.map((t, i) => <p key={i}>{t}</p>)}
+            <dl className="notes">
+              {site.notes.map((n) => <div key={n.k}><dt>{n.k}</dt><dd>{n.v}</dd></div>)}
+            </dl>
           </div>
         </Section>
 
