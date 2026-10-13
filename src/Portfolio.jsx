@@ -176,7 +176,7 @@ function Bar() {
           <li className="hide-sm"><a href="#about">About</a></li>
           <li><a href="#work">Work</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href={site.resume} target="_blank" rel="noreferrer">Résumé</a></li>
+          <li><a href={site.resume} target="_blank" rel="noreferrer">Resume</a></li>
         </ul>
       </div>
     </nav>
@@ -327,7 +327,7 @@ export default function Portfolio() {
           <p className="contact-links">
             <a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
             <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href={site.resume} target="_blank" rel="noreferrer">Résumé ↗</a>
+            <a href={site.resume} target="_blank" rel="noreferrer">Resume ↗</a>
             <span>{site.location}</span>
           </p>
         </Section>
