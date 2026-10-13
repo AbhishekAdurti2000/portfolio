@@ -302,8 +302,8 @@ export default function Portfolio() {
 
       <header id="top" className="hero">
         <picture>
-          <source srcSet={site.hero.webp} type="image/webp" />
-          <img src={site.hero.jpg} alt={site.hero.alt} fetchpriority="high" />
+          <source srcSet="hero-brooklyn-1280.webp 1280w, hero-brooklyn.webp 2560w" sizes="100vw" type="image/webp" />
+          <img src={site.hero.jpg} srcSet="hero-brooklyn-1280.jpg 1280w, hero-brooklyn.jpg 2560w" sizes="100vw" alt={site.hero.alt} fetchpriority="high" />
         </picture>
         <div className="hero-center">
           <h1>{site.name}</h1>
