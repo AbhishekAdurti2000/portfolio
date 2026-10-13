@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
    ───────────────────────────────────────────────────────────── */
 const site = {
   name: "Abhishek Adurti",
-  line: "I build data and AI products, and take photos of the places I end up.",
+  tagline: ["builder", "photographer", "runner"],
   email: "aadurti@andrew.cmu.edu",
   location: "Pittsburgh, PA",
   resume: "Abhishek_Adurti_Resume.pdf",
@@ -41,6 +41,38 @@ const site = {
   ],
 
   projects: [
+    {
+      when: "2026",
+      title: "SentinelRAG",
+      tag: "AI · Carnegie Mellon",
+      desc: "Agentic RAG assistant over live GitHub data, with guardrails and evaluations that run in CI.",
+      stack: "LangGraph · Claude API · GitHub Actions",
+      link: "https://github.com/AbhishekAdurti2000/sentinelrag",
+      context: "Answers about a codebase go stale fast. I wanted an assistant that reads a repository as it is right now and can be trusted not to make things up.",
+      role: "Solo project. Designed the agent, the retrieval over live GitHub data, the guardrails and the evaluation suite, and built it hands-on with Claude Code.",
+      features: [
+        "Agentic workflow built with LangGraph on the Claude API",
+        "Retrieval over live GitHub data rather than a stale snapshot",
+        "Guardrails around what the agent will answer",
+        "Automated evaluations that run in CI on every change",
+      ],
+      impact: "Published on GitHub as a working, tested agentic RAG system.",
+    },
+    {
+      when: "2026",
+      title: "Movie Recommendation Service",
+      tag: "Machine Learning in Production · Carnegie Mellon",
+      desc: "Kafka streaming pipeline and collaborative-filtering model for a million-user movie service, built with my team.",
+      stack: "Apache Kafka · TensorFlow · Python",
+      context: "The course project for Machine Learning in Production: run a recommendation service for about a million users from a live Kafka event stream, the way it would run in production.",
+      role: "On team Backprop to the Future, I built the collaborative-filtering candidate model and wrote its section of our report.",
+      features: [
+        "Kafka pipeline consuming the live stream of user activity",
+        "Collaborative-filtering recommendation model",
+        "Candidate models compared head to head before choosing one",
+      ],
+      impact: "The team chose my collaborative-filtering model as the production model.",
+    },
     {
       when: "2024–25",
       title: "ESG Reporting System",
@@ -163,7 +195,7 @@ const site = {
 function Bar() {
   const [solid, setSolid] = useState(false);
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > window.innerHeight * 0.6);
+    const onScroll = () => setSolid(window.scrollY > window.innerHeight * 0.75);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -265,15 +297,13 @@ export default function Portfolio() {
           <source srcSet={site.hero.webp} type="image/webp" />
           <img src={site.hero.jpg} alt={site.hero.alt} fetchpriority="high" />
         </picture>
-        <div className="hero-copy">
-          <div>
-            <div>
-              <h1>{site.name}</h1>
-              <p className="hero-line">{site.line}</p>
-            </div>
-            <p className="hero-meta">{site.hero.place}<br />{site.hero.coords}</p>
-          </div>
+        <div className="hero-center">
+          <h1>{site.name}</h1>
+          <p className="hero-tag">{site.tagline.join(" · ")}</p>
         </div>
+        <a className="hero-down" href="#about" aria-label="Scroll to About">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+        </a>
       </header>
 
       <main>
