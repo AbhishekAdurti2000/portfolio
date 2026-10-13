@@ -20,7 +20,10 @@ const site = {
     coords: "40.70° N, 73.99° W",
   },
 
-  photo: { src: "headshot.jpeg", alt: "Portrait of Abhishek Adurti" },
+  // Add more photos of you here; the About section lays them out automatically.
+  photos: [
+    { src: "headshot.jpeg", alt: "Portrait of Abhishek Adurti" },
+  ],
   aboutLead:
     "Mechanical engineer turned consultant turned product person. These days I’m mostly thinking about where AI actually fits into a business.",
   about: [
@@ -35,29 +38,73 @@ const site = {
 
   projects: [
     {
-      when: "2026",
-      title: "SentinelRAG",
-      desc: "Agentic RAG assistant over live GitHub data, with guardrails and evaluations that run in CI.",
-      stack: "LangGraph · Claude API · GitHub Actions",
-      link: "https://github.com/AbhishekAdurti2000/sentinelrag",
+      when: "2024–25",
+      title: "ESG Reporting System",
+      tag: "Data Engineering · KPMG",
+      desc: "Automated ESG metric ingestion for 100+ stakeholders, reducing manual effort by 40%.",
+      stack: "Microsoft Fabric · Python · Power BI · EcoVadis API · RBAC",
+      context: "Large enterprises needed a centralized, automated way to collect, transform, and report ESG metrics for CSRD compliance. Manual processes were slow, error-prone, and couldn’t scale across business units.",
+      role: "Led the end-to-end design and development as Associate Consultant at KPMG. Owned the data pipeline architecture, stakeholder demos, and Power BI dashboard design.",
+      features: [
+        "Multi-layer data pipeline with automated ingestion from 100+ stakeholders",
+        "Python optimization scripts improving pipeline efficiency by 35%",
+        "Power BI KPI models with 30% better reporting accuracy",
+        "Role-based access control and dynamic data masking",
+        "EcoVadis API integration with HRMS for 500+ records a month",
+      ],
+      impact: "Cut manual reporting effort by 40% and enabled real-time, CSRD-compliant sustainability analysis across the organization.",
     },
     {
-      when: "2026",
-      title: "Movie Recommendation Service",
-      desc: "Kafka streaming pipeline and collaborative-filtering model for a million-user service, built with my team at CMU. My model went to production.",
-      stack: "Apache Kafka · TensorFlow · Python",
+      when: "2022–24",
+      title: "Distributor Management App",
+      tag: "Enterprise App · KPMG",
+      desc: "Sales app with 95% adoption, automating 10,000+ monthly transactions.",
+      stack: "Power Apps · Azure Logic Apps · Azure DevOps · SharePoint",
+      context: "Distributors were managing orders by email and spreadsheets, which led to delays and errors. The client needed a mobile-first app that worked with its existing ERP systems.",
+      role: "Designed and built it end to end as an Analyst at KPMG. Led design sprints and stakeholder demos, and mentored 5 developers on the project.",
+      features: [
+        "Mobile-responsive order management in Power Apps",
+        "Automated invoicing for 10,000+ monthly transactions",
+        "Azure Logic Apps workflows for approvals",
+        "SharePoint integration for documents",
+        "Real-time order tracking and status notifications",
+      ],
+      impact: "Cut order processing time by 40%, reached 95% adoption among distributors, and lifted team adoption by 80% through design sprints.",
     },
     {
       when: "2021",
       title: "CO₂ Emissions Forecasting",
-      desc: "Random forest model forecasting annual CO₂ emissions from World Bank data, with an R² of 96.8%.",
+      tag: "Machine Learning",
+      desc: "Random forest model predicting CO₂ emissions with a 96.8% R² score.",
       stack: "Python · scikit-learn · Pandas",
+      link: "https://github.com/AbhishekAdurti2000",
+      context: "Sustainability teams needed accurate emissions forecasts to plan reduction strategies, and existing estimates were manual and imprecise.",
+      role: "Solo project. Designed the ML pipeline, feature engineering, model selection, and evaluation.",
+      features: [
+        "Preprocessing pipeline on World Bank datasets",
+        "Features for temporal and regional emission patterns",
+        "Random forest regression with hyperparameter tuning",
+        "Cross-validation and model comparison",
+        "Visualization of emissions trends",
+      ],
+      impact: "Reached a 96.8% R² score, giving sustainability planning an accurate, data-driven forecast.",
     },
     {
       when: "2021",
       title: "Facial Expression Detection",
-      desc: "Deep convolutional network that recognizes seven emotions with 86.6% accuracy on FER-2013.",
+      tag: "Deep Learning",
+      desc: "Deep convolutional network classifying seven emotions with 86.63% accuracy.",
       stack: "Python · TensorFlow · OpenCV",
+      link: "https://github.com/AbhishekAdurti2000",
+      context: "An exploration of emotion-aware AI for human-computer interaction: a real-time emotion classifier from facial images.",
+      role: "Solo project. Designed the CNN architecture, training pipeline, and evaluation.",
+      features: [
+        "Deep CNN for 7-class emotion recognition",
+        "Data augmentation on the FER-2013 dataset",
+        "Real-time inference with OpenCV face detection",
+        "Confusion-matrix analysis and per-class tuning",
+      ],
+      impact: "86.63% accuracy across seven emotions, showing emotion-aware AI is viable in real time.",
     },
   ],
 
@@ -124,8 +171,8 @@ function Bar() {
       <div className="bar-inner">
         <a className="bar-name" href="#top">AA</a>
         <ul>
-          <li><a href="#work">Work</a></li>
           <li className="hide-sm"><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href={site.resume} target="_blank" rel="noreferrer">Résumé</a></li>
         </ul>
@@ -142,6 +189,36 @@ function Section({ id, title, children }) {
         <div className="content">{children}</div>
       </div>
     </section>
+  );
+}
+
+function Projects({ rows }) {
+  return (
+    <ul className="index projects">
+      {rows.map((r) => (
+        <li key={r.title}>
+          <span className="when">{r.when}</span>
+          <details>
+            <summary>
+              <span className="title">{r.title}</span>
+              <span className="tag">{r.tag}</span>
+              <span className="desc">{r.desc}</span>
+              <span className="stack">{r.stack}</span>
+              <span className="more" aria-hidden="true">Details</span>
+            </summary>
+            <div className="detail">
+              <div><h4>Context</h4><p>{r.context}</p></div>
+              <div><h4>My role</h4><p>{r.role}</p></div>
+              <div><h4>What I built</h4><ul>{r.features.map((f) => <li key={f}>{f}</li>)}</ul></div>
+              <div><h4>Impact</h4><p>{r.impact}</p></div>
+            </div>
+          </details>
+          {r.link
+            ? <a className="go gold" href={r.link} target="_blank" rel="noreferrer">GitHub ↗</a>
+            : <span />}
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -173,7 +250,7 @@ export default function Portfolio() {
   const year = new Date().getFullYear();
   return (
     <>
-      <a className="skip" href="#work">Skip to content</a>
+      <a className="skip" href="#about">Skip to content</a>
       <Bar />
 
       <header id="top" className="hero">
@@ -193,17 +270,17 @@ export default function Portfolio() {
       </header>
 
       <main>
-        <Section id="work" title="Work">
-          <p className="sub">Projects</p>
-          <Index rows={site.projects} />
-          <p className="sub">Experience</p>
-          <Index rows={site.experience} />
-        </Section>
-
         <Section id="about" title="About">
           <p className="about-lead">{site.aboutLead}</p>
           <div className="about-grid">
-            <figure><img src={site.photo.src} alt={site.photo.alt} loading="lazy" /></figure>
+            <div className={`photos n${site.photos.length}`}>
+              {site.photos.map((p) => (
+                <figure key={p.src}>
+                  <img src={p.src} alt={p.alt} loading="lazy" />
+                  {p.caption && <figcaption>{p.caption}</figcaption>}
+                </figure>
+              ))}
+            </div>
             <div className="about-text">
               {site.about.map((t, i) => <p key={i}>{t}</p>)}
               <dl className="notes">
@@ -211,6 +288,13 @@ export default function Portfolio() {
               </dl>
             </div>
           </div>
+        </Section>
+
+        <Section id="work" title="Work">
+          <p className="sub">Projects</p>
+          <Projects rows={site.projects} />
+          <p className="sub">Experience</p>
+          <Index rows={site.experience} />
         </Section>
 
         <Section id="skills" title="Toolkit">
