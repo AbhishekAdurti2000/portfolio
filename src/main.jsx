@@ -1,15 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Portfolio from './Portfolio.jsx'
-
-// Reset default styles
-const style = document.createElement('style')
-style.textContent = `
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-`
-document.head.appendChild(style)
+import '@fontsource-variable/inter'
+import '@fontsource/newsreader/500.css'
+import './styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
