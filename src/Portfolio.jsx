@@ -91,7 +91,7 @@ const site = {
     {
       when: "2026",
       title: "ZS Associates",
-      logo: { text: "ZS" },
+      logo: { src: "logo-zs.svg", text: "ZS" },
       role: "Business Technology Solutions Associate Consultant Intern",
       desc: "Helped a global pharma client replace a pile of manual reporting with one digital process, from first requirements to sign-off.",
     },
@@ -119,7 +119,7 @@ const site = {
   ],
 
   education: [
-    { when: "2025–26", title: "Carnegie Mellon University", logo: { src: "https://upload.wikimedia.org/wikipedia/en/b/bb/Carnegie_Mellon_University_seal.svg", text: "CMU" }, role: "Master of Information Systems Management, Heinz College" },
+    { when: "2025–26", title: "Carnegie Mellon University", logo: { src: "logo-cmu.webp", text: "CMU", full: true }, role: "Master of Information Systems Management, Heinz College" },
     { when: "2018–22", title: "Vellore Institute of Technology", logo: { src: "logo-vit.svg" }, role: "B.Tech in Mechanical Engineering · GPA 3.86 / 4.0" },
     { when: "2018", title: "Springdales School, Delhi", logo: { src: "logo-springdales.png" }, role: "High school, science" },
   ],
@@ -250,7 +250,7 @@ function Logo({ logo }) {
   if (!logo) return null;
   if (logo.src && !failed) {
     return (
-      <span className="logo">
+      <span className={`logo${logo.full ? " logo-full" : ""}`}>
         <img src={logo.src} alt="" onError={() => setFailed(true)} />
       </span>
     );
@@ -279,9 +279,15 @@ function Index({ rows }) {
   );
 }
 
+// Icons show in their own colours; a few that are black by design are
+// tinted to the text colour instead so they stay visible on the dark page.
+const MONO = new Set(["apachekafka", "amazonwebservices", "pandas"]);
 function Icon({ name }) {
   if (!name) return <span className="icon icon-none" aria-hidden="true" />;
-  return <span className="icon" aria-hidden="true" style={{ WebkitMaskImage: `url(icons/${name}.svg)`, maskImage: `url(icons/${name}.svg)` }} />;
+  if (MONO.has(name)) {
+    return <span className="icon icon-mono" aria-hidden="true" style={{ WebkitMaskImage: `url(icons/${name}.svg)`, maskImage: `url(icons/${name}.svg)` }} />;
+  }
+  return <img className="icon" src={`icons/${name}.svg`} alt="" aria-hidden="true" />;
 }
 
 /* ─────────────────────────────────────────────────────────────
