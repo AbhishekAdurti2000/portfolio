@@ -120,31 +120,62 @@ main { padding: 0 var(--gutter); }
 }
 
 /* ─── Hero ──────────────────────────────────────────────────── */
-.hero { max-width: var(--wide); margin: 0 auto; padding: 120px 0 104px; }
+/* Full-bleed photo, name set in the open sky, intro below it. */
+.hero-photo {
+  position: relative;
+  margin: 0 calc(-1 * var(--gutter));
+  height: clamp(440px, 74vh, 780px);
+  overflow: hidden;
+  background: #1c2a40;           /* the photo's own dusk blue, shown while it loads */
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 22%;
+  animation: develop 1.4s ease both;
+}
+@keyframes develop { from { opacity: .35; filter: saturate(.6); } to { opacity: 1; filter: none; } }
+.hero-overlay {
+  position: absolute; inset: 0;
+  /* a soft shade on the sky keeps white text above 4.5:1 */
+  background: linear-gradient(to bottom, rgba(10,20,40,.38) 0%, rgba(10,20,40,.12) 38%, rgba(0,0,0,0) 55%, rgba(0,0,0,.28) 100%);
+  padding: 0 var(--gutter);
+}
+.hero-inner { max-width: var(--wide); margin: 0 auto; padding-top: clamp(40px, 7vh, 80px); color: #fff; }
 .hero-name {
   font-family: var(--font-serif);
   font-weight: 500;
-  font-size: clamp(48px, 9vw, 96px);
+  font-size: clamp(48px, 9vw, 104px);
   line-height: 1.02;
   letter-spacing: -0.025em;
+  text-wrap: balance;
+  text-shadow: 0 1px 24px rgba(0,0,0,.18);
 }
 .hero-roles {
-  margin-top: 20px;
-  font-size: clamp(19px, 2.4vw, 24px);
+  margin-top: 16px;
+  font-size: clamp(18px, 2.3vw, 24px);
   font-weight: 500;
   letter-spacing: -0.02em;
-  color: var(--text-2);
+  color: rgba(255,255,255,.9);
 }
-.hero-roles span + span::before { content: "·"; margin: 0 .5em; color: var(--text-3); }
+.hero-roles span + span::before { content: "·"; margin: 0 .5em; color: rgba(255,255,255,.6); }
+.hero-caption {
+  position: absolute; right: var(--gutter); bottom: 16px;
+  font-size: 12px; color: rgba(255,255,255,.85); letter-spacing: 0;
+}
+.hero-text { max-width: var(--wide); margin: 0 auto; padding: 72px 0 96px; }
 .hero-intro {
-  margin-top: 40px; max-width: 600px;
-  font-size: 21px; line-height: 1.48; letter-spacing: -0.02em;
+  max-width: 640px;
+  font-size: 24px; line-height: 1.42; letter-spacing: -0.022em;
 }
-.hero-links { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 17px; }
+.hero-links { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 17px; }
 .chev::after { content: "\00a0›"; }
+.hero-text + .section { border-top: 1px solid var(--rule); }
 @media (max-width: 760px) {
-  .hero { padding: 72px 0 64px; }
-  .hero-intro { font-size: 19px; }
+  .hero-photo { height: clamp(380px, 62vh, 560px); }
+  .hero-photo img { object-position: 38% 50%; }
+  .hero-caption { left: var(--gutter); right: auto; }
+  .hero-text { padding: 48px 0 64px; }
+  .hero-intro { font-size: 20px; }
 }
 
 /* ─── About ─────────────────────────────────────────────────── */
@@ -219,11 +250,11 @@ main { padding: 0 var(--gutter); }
 
 /* ─── Motion: one quiet moment, the hero settling in on load ─ */
 @keyframes settle { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-.hero > * { animation: settle .9s cubic-bezier(.2,.7,.2,1) both; }
-.hero > :nth-child(2) { animation-delay: .12s; }
-.hero > :nth-child(3) { animation-delay: .24s; }
-.hero > :nth-child(4) { animation-delay: .36s; }
+.hero-inner > *, .hero-text > * { animation: settle .9s cubic-bezier(.2,.7,.2,1) both; }
+.hero-inner > :nth-child(2) { animation-delay: .15s; }
+.hero-text > :nth-child(1) { animation-delay: .3s; }
+.hero-text > :nth-child(2) { animation-delay: .42s; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .hero > * { animation: none; }
+  .hero-inner > *, .hero-text > *, .hero-photo img { animation: none; }
 }

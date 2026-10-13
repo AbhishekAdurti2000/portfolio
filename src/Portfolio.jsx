@@ -14,11 +14,17 @@ const site = {
   github: "https://github.com/AbhishekAdurti2000",
   linkedin: "https://www.linkedin.com/in/abhishekadurti/",
   photo: "headshot.jpeg",
+  hero: {
+    jpg: "hero-brooklyn.jpg",
+    webp: "hero-brooklyn.webp",
+    alt: "The sun setting behind the Brooklyn Bridge, with the Lower Manhattan skyline across the East River",
+    caption: "Brooklyn Bridge Park, New York. Shot by me.",
+  },
 
   about: [
     "I started out as a mechanical engineer, then spent three years at KPMG building data platforms and enterprise apps for large clients. Somewhere in there I realized I cared less about how to build things and more about what to build, and why.",
     "These days I’m at Carnegie Mellon’s Heinz College, spending most of my time on AI products: RAG and agentic systems, recommendation models, and the harder question of where AI actually fits into a business.",
-    "Off the clock: tennis court, airport terminal, or deep in an AI rabbit hole. Probably all three in the same week.",
+    "Off the clock I take photos (the one at the top is from Brooklyn Bridge Park), play tennis, and travel whenever I can. Probably all three in the same week.",
   ],
   lately: [
     { label: "Reading", value: "Continuous Discovery Habits, Teresa Torres" },
@@ -182,19 +188,31 @@ export default function Portfolio() {
       <Nav />
 
       <main id="main">
-        {/* Hero */}
-        <header id="top" className="hero">
-          <h1 className="hero-name">{site.name}</h1>
-          <p className="hero-roles" aria-label={site.roles.join(", ")}>
-            {site.roles.map((r) => <span key={r}>{r}</span>)}
-          </p>
+        {/* Hero: a photo I took, then a short hello */}
+        <header id="top" className="hero-photo">
+          <picture>
+            <source srcSet={site.hero.webp} type="image/webp" />
+            <img src={site.hero.jpg} alt={site.hero.alt} fetchpriority="high" />
+          </picture>
+          <div className="hero-overlay">
+            <div className="hero-inner">
+              <h1 className="hero-name">{site.name}</h1>
+              <p className="hero-roles" aria-label={site.roles.join(", ")}>
+                {site.roles.map((r) => <span key={r}>{r}</span>)}
+              </p>
+            </div>
+          </div>
+          <p className="hero-caption">{site.hero.caption}</p>
+        </header>
+
+        <section className="hero-text" aria-label="Introduction">
           <p className="hero-intro">{site.intro}</p>
           <p className="hero-links">
             <a className="chev" href="#work">See my work</a>
             <a className="chev" href={site.resume} target="_blank" rel="noreferrer">Read my résumé</a>
             <a className="chev" href={`mailto:${site.email}`}>Say hello</a>
           </p>
-        </header>
+        </section>
 
         {/* About */}
         <Section id="about" title="About">
