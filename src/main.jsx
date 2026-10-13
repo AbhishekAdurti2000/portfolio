@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import Portfolio from './Portfolio.jsx'
 import '@fontsource-variable/inter'
-import '@fontsource/newsreader/500.css'
+import '@fontsource/dm-serif-display/400.css'
 import './styles.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

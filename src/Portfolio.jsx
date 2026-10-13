@@ -2,113 +2,99 @@ import { useEffect, useState } from "react";
 
 /* ─────────────────────────────────────────────────────────────
    Content. Everything on the site lives here: edit freely.
+   To add a second About photo, add another entry to aboutPhotos.
    ───────────────────────────────────────────────────────────── */
 const site = {
   name: "Abhishek Adurti",
-  roles: ["Data", "AI", "Product"],
-  intro:
-    "I build data platforms and AI products, and I’m happiest somewhere between the whiteboard and the commit. Right now I’m finishing my Master’s at Carnegie Mellon, after three years at KPMG and a summer at ZS.",
+  tagline: ["builder", "photographer", "tennis player"],
   email: "aadurti@andrew.cmu.edu",
-  location: "Pittsburgh, PA",
+  location: "Pittsburgh, Pennsylvania",
   resume: "Abhishek_Adurti_Resume.pdf",
   github: "https://github.com/AbhishekAdurti2000",
   linkedin: "https://www.linkedin.com/in/abhishekadurti/",
-  photo: "headshot.jpeg",
+
   hero: {
     jpg: "hero-brooklyn.jpg",
     webp: "hero-brooklyn.webp",
     alt: "The sun setting behind the Brooklyn Bridge, with the Lower Manhattan skyline across the East River",
-    caption: "Brooklyn Bridge Park, New York. Shot by me.",
+    credit: "Brooklyn Bridge Park, New York",
   },
 
-  about: [
-    "I started out as a mechanical engineer, then spent three years at KPMG building data platforms and enterprise apps for large clients. Somewhere in there I realized I cared less about how to build things and more about what to build, and why.",
-    "These days I’m at Carnegie Mellon’s Heinz College, spending most of my time on AI products: RAG and agentic systems, recommendation models, and the harder question of where AI actually fits into a business.",
-    "Off the clock I take photos (the one at the top is from Brooklyn Bridge Park), play tennis, and travel whenever I can. Probably all three in the same week.",
+  aboutPhotos: [
+    { src: "headshot.jpeg", alt: "Portrait of Abhishek Adurti" },
   ],
-  lately: [
-    { label: "Reading", value: "Continuous Discovery Habits, Teresa Torres" },
-    { label: "Listening", value: "Lenny’s Podcast" },
-    { label: "Playing", value: "Tennis, still grinding the serve" },
+  aboutLead:
+    "I’m Abhishek. I build data platforms and AI products, take photos of the places I end up, and spend too much time on a tennis court.",
+  aboutMore: [
+    "Mechanical engineer turned consultant turned product person. I spent three years at KPMG building data platforms and enterprise apps, and a summer at ZS helping a global pharma client go fully digital. Somewhere in there I started caring less about how to build things and more about what to build, and why.",
+    "Now I’m finishing my Master’s in Information Systems Management at Carnegie Mellon, working mostly on AI products: RAG and agentic systems, recommendation models, and where AI actually fits into a business.",
   ],
 
   projects: [
     {
       title: "SentinelRAG",
-      when: "2026",
-      desc: "An agentic RAG assistant over live GitHub data, with guardrails and evaluations that run in CI on every change.",
-      stack: ["LangGraph", "Claude API", "GitHub Actions"],
+      desc: "Agentic RAG assistant over live GitHub data, with guardrails and evaluations that run in CI.",
+      stack: "LangGraph, Claude API, GitHub Actions",
       link: "https://github.com/AbhishekAdurti2000/sentinelrag",
     },
     {
       title: "Movie Recommendation Service",
-      when: "Fall 2026",
-      desc: "A Kafka streaming pipeline and collaborative-filtering model for a million-user service, built with my team at CMU. My model was the one we put into production.",
-      stack: ["Apache Kafka", "TensorFlow", "Collaborative Filtering"],
+      desc: "Kafka streaming pipeline and collaborative-filtering model for a million-user service. My model went to production.",
+      stack: "Apache Kafka, TensorFlow, Python",
+      when: "CMU · Fall 2026",
     },
     {
       title: "CO₂ Emissions Forecasting",
+      desc: "Random forest model forecasting annual CO₂ emissions from World Bank data, with an R² of 96.8%.",
+      stack: "Python, scikit-learn, Pandas",
       when: "2021",
-      desc: "A random forest model that forecasts annual CO₂ emissions from World Bank data, with an R² of 96.8%.",
-      stack: ["Python", "scikit-learn", "Pandas"],
     },
     {
       title: "Facial Expression Detection",
+      desc: "Deep convolutional network that recognizes seven emotions with 86.6% accuracy on FER-2013.",
+      stack: "Python, TensorFlow, OpenCV",
       when: "2021",
-      desc: "A deep convolutional network that recognizes seven emotions with 86.6% accuracy on FER-2013.",
-      stack: ["Python", "TensorFlow", "OpenCV"],
     },
   ],
 
   experience: [
     {
-      org: "ZS Associates",
+      title: "ZS Associates",
       role: "Business Technology Solutions Associate Consultant Intern",
-      where: "Princeton, NJ",
-      when: "Jun – Aug 2026",
-      desc: "Took a global pharma client from scattered requirements across six workstreams to its first fully digital reporting cycle, prototyping with GenAI along the way.",
+      desc: "Took a global pharma client from scattered requirements across six workstreams to its first fully digital reporting cycle.",
+      when: "Summer 2026",
     },
     {
-      org: "KPMG",
+      title: "KPMG",
       role: "Associate Consultant",
-      where: "Gurgaon, India",
+      desc: "Databricks, Snowflake and Microsoft Fabric pipelines behind 100+ KPI dashboards; owned requirements on a client-facing sustainability transformation.",
       when: "2024 – 2025",
-      desc: "Built Databricks, Snowflake and Microsoft Fabric pipelines behind 100+ KPI dashboards, and owned requirements on a client-facing sustainability transformation.",
     },
     {
-      org: "KPMG",
+      title: "KPMG",
       role: "Analyst",
-      where: "Gurgaon, India",
+      desc: "Shipped a distributor sales app with 95% adoption, automated 10,000+ monthly invoices, and built a RAG support assistant.",
       when: "2022 – 2024",
-      desc: "Shipped a distributor sales app that reached 95% adoption, automated 10,000+ monthly invoices, and built a RAG support assistant that cut token costs by 30%.",
     },
     {
-      org: "KPMG",
+      title: "KPMG",
       role: "Intern Analyst",
-      where: "Gurgaon, India",
-      when: "Jan – Jun 2022",
-      desc: "Built a compliance approval tool that cut approval times by 90% and rolled out single sign-on for 900+ users.",
-    },
-    {
-      org: "SKF India",
-      role: "Summer Intern",
-      where: "Bangalore, India",
-      when: "Jul – Aug 2021",
-      desc: "New product development on a charging roller assembly, from CAD to supplier and QA reviews.",
+      desc: "Built a compliance approval tool that cut approval times by 90%.",
+      when: "2022",
     },
   ],
 
-  toolkit: [
-    { group: "Languages", items: ["Python", "SQL", "Java", "JavaScript"] },
-    { group: "Data", items: ["Databricks", "Spark", "Kafka", "Snowflake", "BigQuery", "Microsoft Fabric"] },
-    { group: "AI & ML", items: ["LangGraph", "RAG", "TensorFlow", "scikit-learn"] },
-    { group: "Cloud", items: ["Azure", "AWS", "GCP", "Docker"] },
+  languages: ["Python", "SQL", "Java", "JavaScript", "C++"],
+  skills: [
+    { group: "Data", items: ["Databricks", "Apache Spark", "Apache Kafka", "Snowflake", "BigQuery", "Microsoft Fabric"] },
+    { group: "AI & ML", items: ["LangGraph", "RAG", "TensorFlow", "scikit-learn", "OpenCV"] },
+    { group: "Cloud", items: ["Azure", "AWS", "GCP", "Docker", "Azure DevOps"] },
     { group: "Product", items: ["Discovery & requirements", "Prototyping", "Agile / Scrum", "Jira", "Figma"] },
   ],
 
   quotes: [
     {
-      text: "Focused and diligent, demonstrating a great work ethic by seamlessly working on multiple projects and delivering tasks on time. He went above and beyond, leading the team in feature development, code reviews, and knowledge transfer sessions.",
+      text: "He went above and beyond, leading the team in feature development, code reviews, and knowledge transfer sessions.",
       name: "Gaurav Dureja",
       title: "Technical Architect, KPMG India",
     },
@@ -117,210 +103,159 @@ const site = {
       name: "Prince Sidana",
       title: "Director, Digital Cloud Solutions, KPMG India",
     },
-    {
-      text: "He mentored junior developers, guided code reviews, and promoted best software practices.",
-      name: "Subhajyoti Majumdar",
-      title: "Senior Technical Architect, KPMG India",
-    },
-  ],
-
-  education: [
-    { what: "Carnegie Mellon University, MS Information Systems Management", when: "2026" },
-    { what: "Vellore Institute of Technology, B.Tech Mechanical Engineering", when: "2022" },
-  ],
-  recognition: [
-    { what: "Encore Spot Award, KPMG", when: "2024" },
-    { what: "Encore Kudos Award, KPMG", when: "2024" },
-    { what: "Professional Scrum Master I", when: "Scrum.org" },
-    { what: "AWS Certified Cloud Practitioner", when: "AWS" },
-    { what: "Azure AZ-900 · Power Platform PL-100, PL-400", when: "Microsoft" },
   ],
 };
 
 /* ─────────────────────────────────────────────────────────────
-   Pieces
+   Page
    ───────────────────────────────────────────────────────────── */
-function Section({ id, title, lede, children }) {
-  return (
-    <section id={id} className="section" aria-labelledby={`${id}-title`}>
-      <div className="section-head">
-        <h2 id={`${id}-title`} className="section-title">{title}</h2>
-        {lede && <p className="section-lede">{lede}</p>}
-      </div>
-      <div className="section-body">{children}</div>
-    </section>
-  );
-}
-
 function Nav() {
-  const [scrolled, setScrolled] = useState(false);
+  const [show, setShow] = useState(false);
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => setShow(window.scrollY > window.innerHeight * 0.7);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <nav className={`nav${scrolled ? " scrolled" : ""}`} aria-label="Primary">
-      <div className="nav-inner">
-        <a className="nav-name" href="#top">{site.name}</a>
-        <ul className="nav-links">
-          <li className="hide-sm"><a href="#about">About</a></li>
-          <li><a href="#work">Work</a></li>
-          <li className="hide-sm"><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a className="resume" href={site.resume} target="_blank" rel="noreferrer">Résumé</a></li>
-        </ul>
-      </div>
+    <nav className={`nav${show ? " show" : ""}`} aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li className="hide-sm"><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
   );
 }
 
-/* ─────────────────────────────────────────────────────────────
-   Page
-   ───────────────────────────────────────────────────────────── */
 export default function Portfolio() {
   const year = new Date().getFullYear();
 
   return (
     <>
-      <a className="skip" href="#main">Skip to content</a>
+      <a className="skip" href="#about">Skip to content</a>
       <Nav />
 
-      <main id="main">
-        {/* Hero: a photo I took, then a short hello */}
-        <header id="top" className="hero-photo">
-          <picture>
-            <source srcSet={site.hero.webp} type="image/webp" />
-            <img src={site.hero.jpg} alt={site.hero.alt} fetchpriority="high" />
-          </picture>
-          <div className="hero-overlay">
-            <div className="hero-inner">
-              <h1 className="hero-name">{site.name}</h1>
-              <p className="hero-roles" aria-label={site.roles.join(", ")}>
-                {site.roles.map((r) => <span key={r}>{r}</span>)}
+      {/* Hero */}
+      <header className="hero">
+        <picture>
+          <source srcSet={site.hero.webp} type="image/webp" />
+          <img src={site.hero.jpg} alt={site.hero.alt} fetchpriority="high" />
+        </picture>
+        <div className="hero-text">
+          <h1>{site.name}</h1>
+          <p>{site.tagline.join(" · ")}</p>
+        </div>
+        <a className="hero-down" href="#about" aria-label="Scroll to About">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </a>
+        <p className="hero-credit">{site.hero.credit}</p>
+      </header>
+
+      <main>
+        {/* About */}
+        <section id="about" className="section">
+          <div className="about">
+            <div className="about-photos">
+              {site.aboutPhotos.map((p) => (
+                <figure key={p.src}><img src={p.src} alt={p.alt} loading="lazy" /></figure>
+              ))}
+            </div>
+            <div className="about-copy">
+              <p className="lead">{site.aboutLead}</p>
+              {site.aboutMore.map((t, i) => <p className="more" key={i}>{t}</p>)}
+            </div>
+          </div>
+        </section>
+
+        {/* Work */}
+        <section id="work" className="section">
+          <div className="col">
+            <h2>Work</h2>
+
+            <div className="group">
+              <h3 className="sub">Projects</h3>
+              {site.projects.map((p) => (
+                <div className="item" key={p.title}>
+                  <div className="item-top">
+                    <span className="item-title">{p.title}</span>
+                    {p.link
+                      ? <a className="item-link" href={p.link} target="_blank" rel="noreferrer">GitHub</a>
+                      : <span className="item-when">{p.when}</span>}
+                  </div>
+                  <p className="item-desc">{p.desc}</p>
+                  <p className="item-meta">{p.stack}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="group">
+              <h3 className="sub">Experience</h3>
+              {site.experience.map((e) => (
+                <div className="item" key={e.title + e.role}>
+                  <div className="item-top">
+                    <span className="item-title">{e.title}</span>
+                    <span className="item-when">{e.when}</span>
+                  </div>
+                  <p className="item-role">{e.role}</p>
+                  <p className="item-desc">{e.desc}</p>
+                </div>
+              ))}
+              <p className="item-meta" style={{ marginTop: 20 }}>
+                <a className="item-link" href={site.resume} target="_blank" rel="noreferrer">Full résumé →</a>
               </p>
             </div>
           </div>
-          <p className="hero-caption">{site.hero.caption}</p>
-        </header>
-
-        <section className="hero-text" aria-label="Introduction">
-          <p className="hero-intro">{site.intro}</p>
-          <p className="hero-links">
-            <a className="chev" href="#work">See my work</a>
-            <a className="chev" href={site.resume} target="_blank" rel="noreferrer">Read my résumé</a>
-            <a className="chev" href={`mailto:${site.email}`}>Say hello</a>
-          </p>
         </section>
 
-        {/* About */}
-        <Section id="about" title="About">
-          <div className="about">
-            <div className="about-photo">
-              <img src={site.photo} alt="Portrait of Abhishek Adurti" loading="lazy" />
-            </div>
-            <div>
-              <div className="about-text">
-                {site.about.map((p, i) => <p key={i}>{p}</p>)}
-              </div>
-              <dl className="lately">
-                {site.lately.map((l) => (
-                  <div key={l.label}><dt>{l.label}</dt><dd>{l.value}</dd></div>
-                ))}
-              </dl>
+        {/* Skills */}
+        <section id="skills" className="section">
+          <div className="col">
+            <h2>Skills</h2>
+            <div className="langs">{site.languages.map((l) => <span key={l}>{l}</span>)}</div>
+            <div className="skill-groups">
+              {site.skills.map((s) => (
+                <div key={s.group}>
+                  <h3>{s.group}</h3>
+                  <ul>{s.items.map((i) => <li key={i}>{i}</li>)}</ul>
+                </div>
+              ))}
             </div>
           </div>
-        </Section>
-
-        {/* Work */}
-        <Section id="work" title="Work" lede="Things I’ve built on my own or with a small team.">
-          <ul className="rows">
-            {site.projects.map((p) => (
-              <li className="row" key={p.title}>
-                <div className="row-top">
-                  <h3 className="row-title">{p.title}</h3>
-                  {p.link
-                    ? <a className="row-link chev" href={p.link} target="_blank" rel="noreferrer">GitHub</a>
-                    : <span className="row-meta">{p.when}</span>}
-                </div>
-                <p className="row-desc">{p.desc}</p>
-                <p className="row-stack">{p.stack.map((s) => <span key={s}>{s}</span>)}</p>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* Experience */}
-        <Section id="experience" title="Experience">
-          <ul className="rows">
-            {site.experience.map((e) => (
-              <li className="row" key={e.org + e.role}>
-                <div className="row-top">
-                  <h3 className="row-title">{e.org}</h3>
-                  <span className="row-meta">{e.when}</span>
-                </div>
-                <p className="row-sub">{e.role} · {e.where}</p>
-                <p className="row-desc">{e.desc}</p>
-              </li>
-            ))}
-          </ul>
-        </Section>
-
-        {/* Toolkit */}
-        <Section id="toolkit" title="Toolkit">
-          <div className="toolkit">
-            {site.toolkit.map((t) => (
-              <div key={t.group}>
-                <h3>{t.group}</h3>
-                <ul>{t.items.map((i) => <li key={i}>{i}</li>)}</ul>
-              </div>
-            ))}
-          </div>
-        </Section>
+        </section>
 
         {/* Kind words */}
-        <Section id="kind-words" title="Kind words" lede="From people I worked with at KPMG.">
-          <div className="quotes">
+        <section id="kind-words" className="section">
+          <div className="col">
+            <h2>Kind words</h2>
             {site.quotes.map((q) => (
               <figure className="quote" key={q.name}>
-                <blockquote>{q.text}</blockquote>
-                <figcaption>{q.name} <span>· {q.title}</span></figcaption>
+                <blockquote>“{q.text}”</blockquote>
+                <figcaption><b>{q.name}</b> · {q.title}</figcaption>
               </figure>
             ))}
           </div>
-        </Section>
-
-        {/* Education & recognition */}
-        <Section id="background" title="Background">
-          <div className="pair">
-            <div className="mini">
-              <h3>Education</h3>
-              <ul>{site.education.map((e) => <li key={e.what}><span>{e.what}</span><span>{e.when}</span></li>)}</ul>
-            </div>
-            <div className="mini">
-              <h3>Awards &amp; certifications</h3>
-              <ul>{site.recognition.map((r) => <li key={r.what}><span>{r.what}</span><span>{r.when}</span></li>)}</ul>
-            </div>
-          </div>
-        </Section>
+        </section>
 
         {/* Contact */}
-        <Section id="contact" title="Contact">
-          <p className="contact-line">
-            Always up for a good conversation about data, AI, or what makes a product worth building.
-          </p>
-          <dl className="contact-grid">
-            <div><dt>Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
-            <div><dt>LinkedIn</dt><dd><a href={site.linkedin} target="_blank" rel="noreferrer">abhishekadurti</a></dd></div>
-            <div><dt>GitHub</dt><dd><a href={site.github} target="_blank" rel="noreferrer">AbhishekAdurti2000</a></dd></div>
-            <div><dt>Based in</dt><dd>{site.location}</dd></div>
-          </dl>
-        </Section>
+        <section id="contact" className="section contact">
+          <div className="col">
+            <p className="label">Say hello.</p>
+            <dl>
+              <div><dt>Location</dt><dd>{site.location}</dd></div>
+              <div><dt>Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>
+              <div><dt>GitHub</dt><dd><a href={site.github} target="_blank" rel="noreferrer">github.com/AbhishekAdurti2000</a></dd></div>
+              <div><dt>LinkedIn</dt><dd><a href={site.linkedin} target="_blank" rel="noreferrer">Abhishek Adurti</a></dd></div>
+            </dl>
+          </div>
+        </section>
       </main>
 
       <footer className="footer">
-        <p>© {year} {site.name}. Designed and built in Pittsburgh.</p>
+        <p>© {year} {site.name}. Photos by me.</p>
       </footer>
     </>
   );
