@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
    ───────────────────────────────────────────────────────────── */
 const site = {
   name: "Abhishek Adurti",
-  tagline: ["Builder.", "Photographer.", "Runner."],
+  tagline: ["Builder.", "Photographer.", "Runner"],
   email: "aadurti@andrew.cmu.edu",
   location: "Pittsburgh, PA",
   resume: "Abhishek_Adurti_Resume.pdf",
