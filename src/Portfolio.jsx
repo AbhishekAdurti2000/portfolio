@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
    ───────────────────────────────────────────────────────────── */
 const site = {
   name: "Abhishek Adurti",
-  tagline: ["builder", "photographer", "runner"],
+  tagline: ["Builder.", "Photographer.", "Runner."],
   email: "aadurti@andrew.cmu.edu",
   location: "Pittsburgh, PA",
   resume: "Abhishek_Adurti_Resume.pdf",
@@ -211,7 +211,7 @@ function Section({ id, title, children }) {
   return (
     <section id={id} className="section" aria-labelledby={`${id}-h`}>
       <div className="section-inner">
-        <div className="rail"><h2 id={`${id}-h`} className="label">{title}</h2></div>
+        <div className="rail"><h2 id={`${id}-h`} className="headline">{title}</h2></div>
         <div className="content">{children}</div>
       </div>
     </section>
@@ -236,7 +236,7 @@ function Projects({ rows }) {
             </summary>
             <div className="detail">
               <p>{r.story}</p>
-              {r.link && <a className="link" href={r.link} target="_blank" rel="noreferrer">See it on GitHub ↗</a>}
+              {r.link && <a className="link" href={r.link} target="_blank" rel="noreferrer">View on GitHub ›</a>}
             </div>
           </details>
         </li>
@@ -307,7 +307,7 @@ export default function Portfolio() {
         </picture>
         <div className="hero-center">
           <h1>{site.name}</h1>
-          <p className="hero-tag">{site.tagline.join(" · ")}</p>
+          <p className="hero-tag">{site.tagline.join(" ")}</p>
         </div>
         <a className="hero-down" href="#about" aria-label="Scroll to About">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
@@ -330,7 +330,7 @@ export default function Portfolio() {
               ))}
             </div>
             <div className="about-words">
-              <h2 id="about-h" className="label">About</h2>
+              <h2 id="about-h" className="eyebrow">About</h2>
               <p className="about-lead">{site.aboutLead}</p>
               <div className="about-text">
                 {site.about.map((t, i) => <p key={i}>{t}</p>)}
@@ -349,7 +349,7 @@ export default function Portfolio() {
 
         <Section id="awards" title="Awards & recognition">
           <Index rows={site.awards} />
-          <p className="certs"><span className="label">Certifications</span>{site.certifications}</p>
+          <p className="certs"><span className="eyebrow">Certifications</span>{site.certifications}</p>
         </Section>
 
         <Section id="education" title="Education">
@@ -363,7 +363,7 @@ export default function Portfolio() {
           <div className="skill-groups">
             {site.skills.map((g) => (
               <div key={g.group}>
-                <h3 className="label">{g.group}</h3>
+                <h3 className="eyebrow">{g.group}</h3>
                 <ul>{g.items.map((it) => <li key={it.n}><Icon name={it.i} />{it.n}</li>)}</ul>
               </div>
             ))}
@@ -383,9 +383,9 @@ export default function Portfolio() {
           <p className="contact-line">Always up for a good conversation about data, AI, or what makes a product worth building.</p>
           <a className="contact-mail link" href={`mailto:${site.email}`}>{site.email}</a>
           <p className="contact-links">
-            <a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a>
-            <a href={site.github} target="_blank" rel="noreferrer">GitHub ↗</a>
-            <a href={site.resume} target="_blank" rel="noreferrer">Resume ↗</a>
+            <a href={site.linkedin} target="_blank" rel="noreferrer">LinkedIn ›</a>
+            <a href={site.github} target="_blank" rel="noreferrer">GitHub ›</a>
+            <a href={site.resume} target="_blank" rel="noreferrer">Resume ›</a>
             <span>{site.location}</span>
           </p>
         </Section>
